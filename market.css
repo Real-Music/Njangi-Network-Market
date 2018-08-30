@@ -1,0 +1,432 @@
+* {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #fff;
+    transition: all 300ms ease-in-out;
+}
+
+/* Navigation */
+nav {
+    position: sticky;
+    top: 0;
+    left: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+    align-items: center;
+    height: 60px;
+    background: #111;
+    color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    padding: 5px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    background: #fff;
+    color: #111;
+    padding: 7px 12px;
+}
+
+nav ul li a:hover {
+    background: #111;
+    color: #fff;
+    border-radius: 5px;
+}
+
+/* Theme */
+div.theme {
+    position: fixed;
+    left: 0px;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    box-shadow: 1px 0 5px rgba(0, 0, 0, 0.5);
+    border-bottom-right-radius: 5px;
+}
+
+div.theme a {
+    flex: 1 1 0;
+    text-decoration: none;
+    color: #111;
+    padding: 8px 5px;
+    border-radius: 5px;
+}
+
+div.theme a:hover {
+    transform: scale(0.9);
+    background: #111;
+    color: #fff;
+}
+
+/* Image Preview */
+div.pop {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 1);
+    overflow: auto;
+}
+
+/* The Close Button */
+.close {
+    color: #fff;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 50px;
+    font-weight: bold;
+    transition: all 150ms ease-in-out;
+}
+
+.close:hover,
+.close:focus {
+    color: rgba(255, 255, 255, 0.747);
+    cursor: pointer;
+}
+
+div.preview {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0 20px;
+    background: #111;
+    display: grid;
+    grid-template-columns: 70% 30%;
+    grid-auto-rows: 400px;
+    padding: 20px;
+}
+
+div.preview .one {
+    display: grid;
+    grid-template-columns: 220px auto;
+    /* background: red; */
+}
+
+/* div.preview .two {
+    background: cyan;
+} */
+div.grid {
+    /* background: green; */
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    overflow: hidden;
+}
+
+div.grid .first-row {
+    display: grid;
+    grid-template-rows: repeat(3, 33.3%);
+    grid-auto-columns: 100%;
+    overflow: hidden;
+    align-content: center;
+    color: #fff;
+}
+
+div.grid .first-row img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 4px;
+    object-fit: contain;
+    cursor: pointer;
+}
+
+div.grid img:hover {
+    filter: grayscale(1);
+    opacity: 0.5;
+}
+
+/* Full image display */
+div.full-img {
+    position: relative;
+}
+
+div.full-img div.full {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 90%;
+    width: 90%;
+    border: 1px solid #fff;
+    /* background: orange; */
+}
+
+div.full-img div.full img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Caption */
+div.full .caption {
+    visibility: hidden;
+}
+
+div.full:hover .caption {
+    transition: all 300ms cubic-bezier(0.165, 0.84, 0.44, 1);
+    visibility: visible;
+    position: absolute;
+    bottom: 0;
+    height: 80px;
+    width: 100%;
+    padding: 0 8px;
+    text-align: center;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.739);
+    overflow: hidden;
+}
+
+div.full .caption p {
+    font-size: 13px;
+    line-height: 17px;
+    text-align: left;
+}
+
+div.full .caption h4 {
+    margin: 5px;
+}
+
+/* Image Description */
+div.two {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    color: #fff;
+    overflow: hidden;
+}
+
+div.two .description {
+    padding: 15px;
+    grid-column: 1/3;
+    /* background: darkmagenta; */
+}
+
+.description h3 {
+    text-align: center;
+    padding: 5px;
+}
+
+.description p {
+    line-height: 19px;
+    word-spacing: 1px;
+}
+
+div.two .price {
+    padding: 10px;
+    /* background: darkorange; */
+    margin: auto;
+}
+
+div.two a {
+    text-decoration: none;
+    color: #111;
+    background: #fff;
+    padding: 7px 9px;
+    border-radius: 4px;
+    transition: all 300ms ease-in-out;
+}
+
+div.two a:hover {
+    color: #fff;
+    background: #111;
+    border: 1px solid #fff;
+}
+
+div.two .after-price {
+    padding: 10px;
+    /* background: #2600d1; */
+    margin: auto;
+}
+
+/* Gallery */
+main .image {
+    border-radius: 4px;
+    border: 0;
+    display: inline-block;
+    position: relative;
+}
+
+main .image img {
+    border-radius: 4px;
+    display: block;
+    cursor: pointer;
+}
+
+main .image.fit {
+    display: block;
+    margin: 2em 0 2em 0;
+    width: 100%;
+}
+
+main .image.fit img {
+    width: 100%;
+}
+
+/* Columns */
+main .columns {
+    position: relative;
+    -moz-column-count: 4;
+    -webkit-column-count: 4;
+    column-count: 4;
+    -moz-column-gap: 1em;
+    -webkit-column-gap: 1em;
+    column-gap: 1em;
+    margin: 0px 110px;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 1px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+main .columns .image {
+    position: relative;
+    display: inline-block;
+    margin: 0 0 3em;
+    width: 100%;
+    overflow: hidden;
+}
+
+main .columns .image img {
+    -moz-transition: -moz-transform 0.2s ease-in-out;
+    -webkit-transition: -webkit-transform 0.2s ease-in-out;
+    -ms-transition: -ms-transform 0.2s ease-in-out;
+    transition: transform 0.2s ease-in-out;
+}
+
+main .columns .image:hover img {
+    -moz-transform: scale(1.08);
+    -webkit-transform: scale(1.08);
+    -ms-transform: scale(1.08);
+    transform: scale(1.08);
+}
+
+/* Price Tag */
+main .columns .price-tag {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    width: 80%;
+    padding: 5px;
+    background: rgba(0, 0, 0, 0.808);
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    text-align: center;
+    color: #fff;
+}
+
+main .columns .price-tag * {
+    flex: 1 1 0;
+    font-size: 12px;
+}
+
+main .columns .price-tag #current {
+    border-right: 1px solid rgba(255, 255, 255, 0.739);
+}
+
+/* Short Description */
+main .columns .short {
+    position: absolute;
+    visibility: hidden;
+    height: 0;
+    overflow: hidden;
+    transition: all 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+main .columns .image:hover .short {
+    visibility: visible;
+    bottom: 0;
+    height: 100px;
+    color: #fff;
+    text-align: center;
+    padding: 0 5px;
+    background: rgba(0, 0, 0, 0.739);
+}
+
+main .columns .short p {
+    font-size: 13px;
+    line-height: 17px;
+    text-align: left;
+}
+
+main .columns .short h4 {
+    margin: 5px;
+}
+
+/* Full Description Under Columns */
+main .columns .full-descript {
+    display: none;
+}
+
+/* Image list view from gallery */
+main .columns .img-list {
+    display: none;
+}
+
+/* Next and Previous Button */
+#next,
+#prev {
+    width: 50px;
+    line-height: 50px;
+    border-radius: 50%;
+    font-size: 2rem;
+    text-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+    text-align: center;
+    color: #fff;
+    text-decoration: none;
+    position: absolute;
+    top: 50%;
+    z-index: 1;
+    transform: translateY(-50%);
+    transition: all 150ms ease;
+    cursor: pointer;
+}
+
+#next:hover,
+#prev:hover {
+    background: rgba(0, 0, 0, 0.6);
+    text-shadow: 0;
+    border-top: 2px solid #fff;
+}
+
+#prev {
+    left: 0px;
+}
+
+#next {
+    right: 0px;
+}
+
+/* Media Query */
+@media screen and (max-width: 736px) {
+    main .columns {
+        -moz-column-count: 2;
+        -webkit-column-count: 2;
+        column-count: 2;
+    }
+}
+
+@media screen and (max-width:480px) {
+    main .columns {
+        -moz-column-count: 1;
+        -webkit-column-count: 1;
+        column-count: 1;
+    }
+}
