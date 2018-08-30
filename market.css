@@ -52,20 +52,20 @@ div.theme {
     display: flex;
     flex-direction: column;
     background: #fff;
-    box-shadow: 1px 0 5px rgba(0, 0, 0, 0.5);
-    border-bottom-right-radius: 5px;
 }
 
 div.theme a {
     flex: 1 1 0;
     text-decoration: none;
+    background: #fff;
     color: #111;
     padding: 8px 5px;
+    margin: 2px 5px;
     border-radius: 5px;
+    box-shadow: 1px 0 5px rgba(0, 0, 0, 0.5);
 }
 
 div.theme a:hover {
-    transform: scale(0.9);
     background: #111;
     color: #fff;
 }
@@ -288,7 +288,7 @@ main .columns {
     -moz-column-gap: 1em;
     -webkit-column-gap: 1em;
     column-gap: 1em;
-    margin: 0px 110px;
+    margin: 0px 120px;
     padding: 20px;
     background: #fff;
     box-shadow: 1px 0 5px rgba(0, 0, 0, 0.1);

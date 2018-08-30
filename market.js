@@ -14,18 +14,15 @@ const lightTheme = document.querySelector('#light-theme');
 const columns = document.querySelector('.columns');
 
 let a = 0;
-// var onload = function () {
-//     current.src = imgs[a].src;
-// };
-// onload();
-
 
 // Theme
-darkTheme.addEventListener('click', function () {
+darkTheme.addEventListener('click', function (event) {
+    event.preventDefault();
     document.body.style.background = '#111';
     columns.style.background = '#111';
 });
-lightTheme.addEventListener('click', function () {
+lightTheme.addEventListener('click', function (event) {
+    event.preventDefault();
     document.body.style.background = '#fff';
     columns.style.background = '#fff';
 });
@@ -50,27 +47,9 @@ var toggle = function (g) {
     };
     current.src = imgs[a].src;
     // Calling extra images
-    let i = 0;
-    listView.forEach(items => {
-        var imgList = imgs[a].parentElement.querySelectorAll('#img-list img');
-        if (imgList.length == 0) {
-            items.src = '""';
-        } else if (imgList.length == 1) {
-            for (i = 0; i <= 0; i++) {
-                listView[i].src = imgList[i].src;
-                items.src = '""';
-                break
-            }
-        } else if (imgList.length == 2) {
-            for (i = 0; i <= 1; i++) {
-                listView[i].src = imgList[i].src;
-                items.src = '""';
-            }
-        } else if (imgList.length == 3) {
-            items.src = imgList[i].src;
-            i++;
-        }
-    });
+    var imgList = imgs[a].parentElement.querySelectorAll('#img-list img');
+    listPreview(imgList);
+
     // Change Description
     description();
 
@@ -119,31 +98,39 @@ imgs.forEach((img) => {
 
 
         // List Preview(Extract Images)
-        let i = 0;
-        listView.forEach(items => {
-            var imgList = e.target.parentNode.querySelectorAll('#img-list img');
-            if (imgList.length == 0) {
-                items.src = '""';
-            } else if (imgList.length == 1) {
-                for (i = 0; i <= 0; i++) {
-                    listView[i].src = imgList[i].src;
-                    items.src = '""';
-                    break
-                }
-            } else if (imgList.length == 2) {
-                for (i = 0; i <= 1; i++) {
-                    listView[i].src = imgList[i].src;
-                    items.src = '""';
-                }
-            } else if (imgList.length == 3) {
-                items.src = imgList[i].src;
-                i++;
-            }
-        });
+        var imgList = e.target.parentNode.querySelectorAll('#img-list img');
+        listPreview(imgList);
+
+        // Full Image Display
         pop.style.display = 'block';
     });
 });
 
+// List Preview(Extract Image)
+function listPreview(el) {
+    let i = 0;
+    listView.forEach(items => {
+        var imgList = el;
+        if (imgList.length == 0) {
+            items.src = '""';
+        } else if (imgList.length == 1) {
+            for (i = 0; i <= 0; i++) {
+                listView[i].src = imgList[i].src;
+                items.src = '""';
+                break
+            }
+        } else if (imgList.length == 2) {
+            for (i = 0; i <= 1; i++) {
+                listView[i].src = imgList[i].src;
+                items.src = '""';
+            }
+        } else if (imgList.length == 3) {
+            items.src = imgList[i].src;
+            i++;
+        }
+    });
+    console.log('the function ran completely');
+};
 
 // Chang Description
 function description() {
