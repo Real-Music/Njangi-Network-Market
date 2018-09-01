@@ -13,8 +13,8 @@ body {
 /* Scroll Butoon */
 #scrollToTopButton {
     position: fixed;
-    bottom: 40px;
-    right: 40px;
+    bottom: 10px;
+    right: 10px;
     height: 60px;
     width: 60px;
     font-size: 50px;
@@ -34,6 +34,7 @@ body {
     opacity: 1;
     transform: scale(1);
     visibility: visible;
+    z-index: 1;
 }
 
 /* Navigation */
@@ -74,26 +75,36 @@ nav ul li a:hover {
 /* Theme */
 div.theme {
     position: fixed;
-    left: 0px;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
-    flex-direction: column;
-    background: #fff;
+    flex-wrap: wrap;
+    background: rgb(65, 65, 65);
     border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    padding: 2px 0px;
+    z-index: 1;
+    width: 92%;
+    justify-content: center;
+    text-align: center;
 }
 
 div.theme a {
-    flex: 1 1 0;
+    flex-shrink: 1;
+    flex-basis: 120px;
     text-decoration: none;
-    background: #fff;
-    color: #111;
+    background: rgba(0, 0, 0, 0.616);
+    color: #ffffff;
     padding: 8px 5px;
     margin: 2px 5px;
     border-radius: 5px;
     box-shadow: 1px 0 5px rgba(0, 0, 0, 0.5);
+    transition: all 300ms cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 div.theme a:hover {
-    background: #111;
+    border: 1px solid #fff;
+    transform: scale(1.1);
     color: #fff;
 }
 
@@ -315,7 +326,7 @@ main .columns {
     -moz-column-gap: 1em;
     -webkit-column-gap: 1em;
     column-gap: 1em;
-    margin: 0px 120px;
+    margin: 45px 85px;
     padding: 20px;
     background: #fff;
     box-shadow: 1px 0 5px rgba(0, 0, 0, 0.1);
@@ -341,6 +352,8 @@ main .columns .image:hover img {
     -webkit-transform: scale(1.08);
     -ms-transform: scale(1.08);
     transform: scale(1.08);
+    filter: grayscale(1);
+    opacity: 0.7;
 }
 
 /* Price Tag */
@@ -442,18 +455,68 @@ main .columns .img-list {
 }
 
 /* Media Query */
+@media screen and (max-width: 1125px) {
+    main .columns {
+        margin: 40px 20px;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    main .columns {
+        -moz-column-count: 3;
+        -webkit-column-count: 3;
+        column-count: 3;
+    }
+
+    main .columns {
+        margin: 40px 20px;
+    }
+}
+
 @media screen and (max-width: 736px) {
     main .columns {
         -moz-column-count: 2;
         -webkit-column-count: 2;
         column-count: 2;
     }
+
+    main .columns {
+        margin: 40px 40px;
+    }
 }
 
-@media screen and (max-width:480px) {
+@media screen and (max-width:588px) {
     main .columns {
         -moz-column-count: 1;
         -webkit-column-count: 1;
         column-count: 1;
+    }
+
+    main .columns {
+        margin: 30px 50px;
+    }
+
+    main .columns .short {
+        position: relative;
+        visibility: visible;
+        height: 100px;
+        background: rgba(0, 0, 0, 0.739);
+        padding: 0 5px;
+        text-align: center;
+        color: #fff;
+        height: 100px;
+    }
+
+    main .columns .image:hover img {
+        transform: scale(1);
+    }
+
+    #scrollToTopButton {
+        height: 40px;
+        width: 40px;
+        right: 18px;
+        bottom: 18px;
+        font-size: 20px;
+        font-weight: bolder;
     }
 }

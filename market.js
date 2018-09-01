@@ -162,24 +162,23 @@ function listPreview(el) {
     listView.forEach(items => {
         var imgList = el;
         if (imgList.length == 0) {
-            items.src = '""';
+            items.src = '';
         } else if (imgList.length == 1) {
             for (i = 0; i <= 0; i++) {
                 listView[i].src = imgList[i].src;
-                items.src = '""';
+                items.src = '';
                 break
             }
         } else if (imgList.length == 2) {
             for (i = 0; i <= 1; i++) {
                 listView[i].src = imgList[i].src;
-                items.src = '""';
+                items.src = '';
             }
         } else if (imgList.length == 3) {
             items.src = imgList[i].src;
             i++;
         }
     });
-    console.log('the function ran completely');
 };
 
 // Chang Description
